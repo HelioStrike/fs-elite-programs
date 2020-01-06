@@ -42,10 +42,10 @@ int countInPos(int n,int pos,int d)
     int right=n%po10;
     int rd=n-n%npo10;
     int ru=npo10+rd;
-    int digit=n/po10;
+    int digit=(n/po10)%10;
     if(digit<d) return rd/10;
     else if(digit==d) return rd/10+right+1;
-    return rd/10;
+    return ru/10;
 }
 
 int getDigitCount(int x,int d)
@@ -59,5 +59,5 @@ int getDigitCount(int x,int d)
 int main()
 {
     int d,l,h; cin>>d>>l>>h;
-    cout<<getDigitCount(h+1,d)-getDigitCount(l,d)<<'\n';
+    cout<<getDigitCount(h,d)-getDigitCount(l-1,d)<<'\n';
 }
