@@ -26,3 +26,26 @@ Output: True
 Explanation: There are three patterns in the sequence: [-1, 3, 2], [-1, 3, 0] and [-1, 2, 0].
 
  */
+
+#include <bits/stdc++.h>
+#define N 100
+using namespace std;
+
+int n,x,ans,a[N];
+
+int main()
+{
+    while(cin>>x) a[n++]=x;
+    int minm=INT_MAX,pminm=INT_MAX,maxm=INT_MIN;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]<maxm && a[i]>pminm) { ans=1; break; }
+        if(a[i]>maxm)
+        {
+            maxm=a[i];
+            pminm=minm;
+        }
+        minm=min(minm,a[i]);
+    }
+    cout<<(ans?"True":"False")<<'\n';
+}
