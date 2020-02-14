@@ -27,25 +27,32 @@ Explanation: There are three patterns in the sequence: [-1, 3, 2], [-1, 3, 0] an
 
  */
 
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
 #include <bits/stdc++.h>
-#define N 100
 using namespace std;
 
-int n,x,ans,a[N];
 
 int main()
 {
-    while(cin>>x) a[n++]=x;
-    int minm=INT_MAX,pminm=INT_MAX,maxm=INT_MIN;
+    int n,x,minm=999999; cin>>n;
+    stack<pair<int,int> > s;
+    bool pos=0;
     for(int i=0;i<n;i++)
     {
-        if(a[i]<maxm && a[i]>pminm) { ans=1; break; }
-        if(a[i]>maxm)
-        {
-            maxm=a[i];
-            pminm=minm;
-        }
-        minm=min(minm,a[i]);
+        cin>>x;
+        minm=min(x,minm);
+        while(!s.empty() && s.top().first<x) s.pop();
+        if(!s.empty() && x<s.top().first && x>s.top().second) { pos=1; break; }
+        s.push({x,minm});
     }
-    cout<<(ans?"True":"False")<<'\n';
+    cout<<pos<<'\n';
+
+    return 0;
 }
