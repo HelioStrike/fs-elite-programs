@@ -35,6 +35,6 @@ int main()
     for(char c='a';c<='z';c++) m[c]=c;
     for(int i=0;i<n;i++) if(m[s[i]]!=t[i]) m[s[i]]=t[i];
     for(int i=0;i<n;i++) if(m[s[i]]!=t[i]) { cout<<"false"<<'\n'; return 0; }
-    cout<<"true"<<'\n';
+    cout<<((m.size()<26)?"true":"false)<<'\n';
     return 0;
 }
