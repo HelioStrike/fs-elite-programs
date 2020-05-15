@@ -19,3 +19,42 @@ Example 2:
 	Explanation: The array represents the integer 4321.
 */
 
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main()
+{
+  vector <int> v;
+  string str;
+  getline(cin, str);
+
+  for(int i=0; i<str.length(); i+=2)
+    v.push_back(str[i]-'0');
+
+  int i = v.size() - 1;
+
+  while(v[i] == 9) v[i] = 0, i--;
+
+  cout << "[";
+  if(i==-1) cout << 1 << ", ";   // when 9, 999, etc are inputs, the next num is 10, 1000 etc
+  else v[i] += 1;
+
+
+  for(int i=0; i<v.size(); i++){
+    if(i!=v.size()-1) cout << v[i] << ", ";
+    else cout << v[i];
+  }
+
+  cout << "]" << endl;
+
+
+/*
+  if(i==-1) cout << 1 << "";   // when 9, 999, etc are inputs, the next num is 10, 1000 etc
+  else v[i] += 1;
+
+
+  for(auto i: v) cout << i << "";
+*/
+  return 0;
+}
